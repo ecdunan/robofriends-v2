@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header/header";
 import RobotList from "../components/robot-list";
 import SearchBar from "../components/searchbar/search-bar";
@@ -6,25 +6,34 @@ import { IRobot, robots } from "../utils";
 
 const Robots = () => {
   const [robotList, setRobotList] = useState<IRobot[]>(robots);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
-  const handleSearchBarChange = (keyword) => {
-    let newRobotList = robots.filter(
-      robot => robot.name.toLowerCase().includes(keyword.toLowerCase())
-    );
+  useEffect(() => updateRobotsList(), [searchKeyword]);
 
-    if (!keyword) {
-      newRobotList = robots;
+  const handleSearchChange = (keyword) => {
+    setSearchKeyword(keyword)
+  }
+
+  const updateRobotsList = () => {
+    let newRobotsList;
+
+    if (searchKeyword) {
+      newRobotsList =  robotList.filter(
+        robot => robot.name.toLowerCase().includes(searchKeyword.toLowerCase())
+      );
+    } else {
+      newRobotsList = robots;
     }
-
-    setRobotList(newRobotList)
+    
+    setRobotList(newRobotsList);
   }
 
   return (
-    <>
-      <Header />
-      <SearchBar onChange={handleSearchBarChange} />
+    <div className="text-center mt-5">
+      <h1 className="text-green-300 font-semibold">Robofriends v2!</h1>
+      <SearchBar searchKeyword={searchKeyword} onSearchChange={handleSearchChange}/>
       <RobotList robots={robotList} />
-    </>
+    </div>
   )
 }
 

@@ -1,15 +1,20 @@
 interface Props {
-  onChange: () => void;
+  searchKeyword: string;
+  onSearchChange: (keyword: string) => void;
 }
 
-const SearchBar = ({ onChange: searchbarChange }) => {
+const SearchBar: React.FC<Props> = ({ searchKeyword, onSearchChange }) => {
   const handleChange = (event) => {
-    searchbarChange(event.currentTarget.value);
+    onSearchChange(event.currentTarget.value);
   }
 
-
   return (<div className="text-center">
-    <input type="search" placeholder="Search robots" onChange={handleChange} />
+    <input
+      type="search"
+      placeholder="Search robots"
+      onChange={handleChange}
+      value={searchKeyword}
+    />
   </div>
   )
 }
