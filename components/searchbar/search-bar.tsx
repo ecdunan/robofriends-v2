@@ -10,6 +10,7 @@ const SearchBar: React.FC<Props> = ({ searchKeyword, onSearchChange }) => {
 
   return (<div className="text-center">
     <input
+      className="p-2"
       type="search"
       placeholder="Search robots"
       onChange={handleChange}
