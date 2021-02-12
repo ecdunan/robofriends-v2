@@ -16,8 +16,8 @@ const Robots = () => {
   );
 
   return (
-    <div className="text-center mt-5">
-      <h1 className="text-green-300 font-semibold">Robofriends v2!</h1>
+    <div className="bg-gradient-to-r from-green-800 to-blue-900 text-center min-h-screen py-10">
+      <h1 className="text-green-300 font-sega text-4xl pb-5">Robofriends NextJS</h1>
       <SearchBar searchKeyword={searchKeyword} onSearchChange={handleSearchChange}/>
       <RobotList robots={filteredRobots} />
     </div>

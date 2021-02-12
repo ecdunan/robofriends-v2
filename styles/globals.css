@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'SEGA';
+  font-weight: 400;
+  src: url('../utils//SEGA.TTF');
+}
