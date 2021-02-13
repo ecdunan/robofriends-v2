@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sega': 'SEGA'
-      }
+        sega: "SEGA",
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
